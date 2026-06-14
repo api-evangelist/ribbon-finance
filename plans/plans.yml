@@ -1,0 +1,61 @@
+name: Ribbon Finance / Aevo Plans
+description: Ribbon Finance and Aevo operate as permissionless DeFi protocols. Access to the public API is free and open. Vault participation involves protocol fees on vault profits rather than subscription tiers. Aevo exchange trading uses a maker/taker fee model with no monthly subscription cost.
+url: https://docs.ribbon.finance/
+plans:
+
+  - name: Public API Access
+    description: Free, unauthenticated access to all public REST API endpoints for market data, vault statistics, options pricing, funding rates, orderbook data, and general trading information. No API key required. Rate limits apply per IP address.
+    label: Free
+    price: 0.00
+    currency: USD
+    unit: month
+    authentication: None
+    rateLimit: Per IP address
+    features:
+      - Access to 26+ public GET endpoints
+      - Market data, assets, markets, expiries
+      - Orderbook and pricing data
+      - Funding rates and history
+      - Settlement and mark price history
+      - Vault and strategy statistics
+      - Index prices and statistics
+      - No registration required
+
+  - name: Authenticated API Access
+    description: Free access to private REST API endpoints after completing the cryptographic key registration process. Requires an Ethereum wallet to generate AEVO-KEY and AEVO-SECRET credentials via the /register endpoint using EIP-712 signed messages.
+    label: Authenticated (Free)
+    price: 0.00
+    currency: USD
+    unit: month
+    authentication: AEVO-KEY and AEVO-SECRET headers (cryptographic key registration via Ethereum wallet)
+    rateLimit: Per account
+    features:
+      - All public API endpoints
+      - 38+ authenticated GET endpoints
+      - 27+ authenticated POST endpoints
+      - Account management and settings
+      - Order placement and management
+      - TWAP orders
+      - Position and portfolio tracking
+      - Transfers and withdrawals
+      - Trade and transaction history
+      - Referral and rewards programs
+      - OTC trading
+      - Real-time WebSocket private channels
+
+  - name: Theta Vault Participation
+    description: On-chain participation in Ribbon Finance Theta Vaults (Decentralized Options Vaults). Users deposit crypto assets and earn yield from automated options writing strategies. Protocol fees apply only on profitable weeks.
+    label: Protocol Fees on Profits
+    price: 0.00
+    currency: USD
+    unit: week
+    authentication: Ethereum wallet (on-chain)
+    features:
+      - Covered call strategies (ETH, BTC, AVAX, AAVE, stETH, and more)
+      - Cash-secured put strategies
+      - Automated weekly options rollover
+      - No fees on unprofitable weeks
+      - 2% annualized management fee on AUM
+      - 10% performance fee on weekly profits
+      - 50% of fees to RBN stakers (veRBN holders)
+      - Available on Ethereum, Avalanche, and Solana

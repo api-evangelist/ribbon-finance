@@ -1,0 +1,34 @@
+name: Aevo WebSocket API Rate Limits
+description: Rate limit and connection details for the Aevo Exchange WebSocket API providing real-time streaming data.
+url: https://api-docs.aevo.xyz/
+
+connection:
+  productionURL: wss://ws.aevo.xyz
+  testnetURL: wss://ws-testnet.aevo.xyz
+  inactivityTimeout: 15 minutes
+  keepAlive: Periodic ping messages required to prevent disconnection
+
+channels:
+  public:
+    - name: orderbook
+      description: Real-time orderbook updates for instruments
+    - name: book_ticker
+      description: Best bid/ask ticker updates
+    - name: trades
+      description: Live trade feed for instruments
+    - name: index
+      description: Index price updates
+    - name: funding
+      description: Funding rate updates for perpetuals
+    - name: ticker
+      description: Throttled ticker feed
+
+  private:
+    description: Requires authentication via AEVO-KEY and AEVO-SECRET before subscribing
+    channels:
+      - name: fills
+        description: Real-time fill notifications for your orders
+      - name: orders
+        description: Real-time order status updates
+      - name: positions
+        description: Position update notifications

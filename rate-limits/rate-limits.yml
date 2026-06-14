@@ -1,0 +1,39 @@
+name: Ribbon Finance / Aevo Rate Limits
+description: Rate limits for the Aevo REST API and WebSocket API. Public endpoints are rate-limited per IP address. Authenticated private endpoints are rate-limited per account. When rate limits are exceeded on the REST API, a 429 HTTP response is returned. WebSocket connections time out after 15 minutes of inactivity without a ping.
+url: https://api-docs.aevo.xyz/reference/rate-limits-1
+
+rateLimits:
+
+  - name: Public REST API Rate Limit
+    description: Rate limits applied to unauthenticated public endpoints. Limits are enforced per IP address since no account authentication is required.
+    scope: IP Address
+    endpoints: Public GET endpoints (market data, orderbook, assets, markets, statistics)
+    response: HTTP 429 when exceeded
+    notes: Covers the 26+ public GET endpoints and 3 public POST endpoints for market data, pricing, and statistics
+
+  - name: Private REST API Rate Limit
+    description: Rate limits applied to authenticated private endpoints. Limits are enforced per account using the AEVO-KEY credentials.
+    scope: Per Account
+    endpoints: Private GET, POST, PUT, DELETE endpoints
+    response: HTTP 429 when exceeded
+    notes: Covers 38+ GET, 27+ POST, 1 PUT, and 9 DELETE authenticated endpoints for order management, account settings, and trading operations
+
+  - name: WebSocket Connection Timeout
+    description: WebSocket connections are automatically closed after 15 minutes of inactivity. Clients must send periodic ping messages to maintain the connection.
+    scope: Per Connection
+    inactivityTimeout: 15 minutes
+    keepAlive: Periodic ping messages required
+    endpoints:
+      production: wss://ws.aevo.xyz
+      testnet: wss://ws-testnet.aevo.xyz
+    notes: Applies to both public and private WebSocket channel subscriptions
+
+environments:
+  - name: Mainnet REST API
+    baseURL: https://api.aevo.xyz
+  - name: Testnet REST API
+    baseURL: https://api-testnet.aevo.xyz
+  - name: Mainnet WebSocket
+    baseURL: wss://ws.aevo.xyz
+  - name: Testnet WebSocket
+    baseURL: wss://ws-testnet.aevo.xyz
