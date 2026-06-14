@@ -1,134 +1,147 @@
 name: Ribbon Finance
-description: Ribbon Finance is a DeFi structured products platform that helps users access crypto structured products through automated options strategies. The platform offers Theta Vaults (Decentralized Options Vaults) for covered calls and cash-secured puts, Ribbon Earn for yield optimization, and Ribbon Lend for unsecured lending. Ribbon Finance merged with Aevo, a high-performance Layer-2 order-book decentralized exchange for options and perpetuals trading, providing REST and WebSocket APIs for querying vault performance, options strategies, yield data, and live exchange trading data.
+description: Ribbon Finance is a DeFi structured products platform that helps users
+  access crypto structured products through automated options strategies. The platform
+  offers Theta Vaults (Decentralized Options Vaults) for covered calls and cash-secured
+  puts, Ribbon Earn for yield optimization, and Ribbon Lend for unsecured lending.
+  Ribbon Finance merged with Aevo, a high-performance Layer-2 order-book decentralized
+  exchange for options and perpetuals trading, providing REST and WebSocket APIs for
+  querying vault performance, options strategies, yield data, and live exchange trading
+  data.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/apis.yml
-version: "0.19"
-created: "2026-06-14"
-modified: "2026-06-14"
-specificationVersion: "0.19"
-
+version: '0.19'
+created: '2026-06-14'
+modified: '2026-06-14'
+specificationVersion: '0.19'
 tags:
-  - DeFi
-  - Finance
-  - Options
-  - Structured Products
-  - Ethereum
-  - Layer 2
-  - Vaults
-  - Perpetuals
-  - Yield
-
+- DeFi
+- Finance
+- Options
+- Structured Products
+- Ethereum
+- Layer 2
+- Vaults
+- Perpetuals
+- Yield
 apis:
-
-  - name: Aevo Exchange Public REST API
-    description: Public unauthenticated REST API for Aevo exchange (the trading platform evolved from Ribbon Finance) providing market data, vault statistics, options pricing, funding rates, and other openly available trading information. No authentication required for these endpoints.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://api-docs.aevo.xyz/
-    baseURL: https://api.aevo.xyz
-    tags:
-      - DeFi
-      - Market Data
-      - Options
-      - Perpetuals
-      - Public
-    properties:
-      - type: Documentation
-        url: https://api-docs.aevo.xyz/reference/overview
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/openapi/aevo-public-rest-api.json
-    contact:
-      - FN: Aevo Support
-        url: https://docs.aevo.xyz/
-        email: ""
-
-  - name: Aevo Exchange Private REST API
-    description: Authenticated REST API for Aevo exchange providing account management, order placement and management, position tracking, portfolio data, transfers, withdrawals, and trading history. Requires AEVO-KEY and AEVO-SECRET authentication headers obtained via cryptographic key registration.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://api-docs.aevo.xyz/
-    baseURL: https://api.aevo.xyz
-    tags:
-      - DeFi
-      - Trading
-      - Orders
-      - Account
-      - Authenticated
-    properties:
-      - type: Documentation
-        url: https://api-docs.aevo.xyz/reference/overview
-      - type: Authentication
-        url: https://api-docs.aevo.xyz/reference/authentication
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/openapi/aevo-private-rest-api.json
-    contact:
-      - FN: Aevo Support
-        url: https://docs.aevo.xyz/
-        email: ""
-
-  - name: Aevo Exchange WebSocket API
-    description: Real-time WebSocket API for Aevo exchange providing low-latency streams for orderbook updates, trade feeds, position fills, index price updates, funding rates, and ticker information. Supports both public and authenticated private channels.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://api-docs.aevo.xyz/
-    baseURL: wss://ws.aevo.xyz
-    tags:
-      - DeFi
-      - WebSocket
-      - Real-time
-      - Streaming
-      - Market Data
-    properties:
-      - type: Documentation
-        url: https://api-docs.aevo.xyz/
-      - type: RateLimits
-        url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/rate-limits/aevo-websocket.yml
-    contact:
-      - FN: Aevo Support
-        url: https://docs.aevo.xyz/
-        email: ""
-
-  - name: Ribbon Finance Subgraph API
-    description: GraphQL API hosted on The Graph protocol providing indexed on-chain data for Ribbon Finance vaults including vault performance metrics, historical pricing per share, fee collection data, premium earnings, and vault APY tracking for Theta Vaults and other Ribbon products on Ethereum mainnet.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.ribbon.finance/developers/ribbon-subgraph
-    baseURL: https://thegraph.com/explorer/subgraph
-    tags:
-      - DeFi
-      - GraphQL
-      - Subgraph
-      - On-chain Data
-      - Vaults
-    properties:
-      - type: Documentation
-        url: https://docs.ribbon.finance/developers/ribbon-subgraph
-    contact:
-      - FN: Ribbon Finance Developers
-        url: https://github.com/ribbon-finance
-        email: ""
-
-common:
+- name: Aevo Exchange Public REST API
+  description: Public unauthenticated REST API for Aevo exchange (the trading platform
+    evolved from Ribbon Finance) providing market data, vault statistics, options
+    pricing, funding rates, and other openly available trading information. No authentication
+    required for these endpoints.
+  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://api-docs.aevo.xyz/
+  baseURL: https://api.aevo.xyz
+  tags:
+  - DeFi
+  - Market Data
+  - Options
+  - Perpetuals
+  - Public
+  properties:
   - type: Documentation
-    url: https://docs.ribbon.finance/
-  - type: Documentation
+    url: https://api-docs.aevo.xyz/reference/overview
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/openapi/aevo-public-rest-api.json
+  contact:
+  - FN: Aevo Support
     url: https://docs.aevo.xyz/
-  - type: API Reference
+    email: ''
+- name: Aevo Exchange Private REST API
+  description: Authenticated REST API for Aevo exchange providing account management,
+    order placement and management, position tracking, portfolio data, transfers,
+    withdrawals, and trading history. Requires AEVO-KEY and AEVO-SECRET authentication
+    headers obtained via cryptographic key registration.
+  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://api-docs.aevo.xyz/
+  baseURL: https://api.aevo.xyz
+  tags:
+  - DeFi
+  - Trading
+  - Orders
+  - Account
+  - Authenticated
+  properties:
+  - type: Documentation
+    url: https://api-docs.aevo.xyz/reference/overview
+  - type: Authentication
+    url: https://api-docs.aevo.xyz/reference/authentication
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/openapi/aevo-private-rest-api.json
+  contact:
+  - FN: Aevo Support
+    url: https://docs.aevo.xyz/
+    email: ''
+- name: Aevo Exchange WebSocket API
+  description: Real-time WebSocket API for Aevo exchange providing low-latency streams
+    for orderbook updates, trade feeds, position fills, index price updates, funding
+    rates, and ticker information. Supports both public and authenticated private
+    channels.
+  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://api-docs.aevo.xyz/
+  baseURL: wss://ws.aevo.xyz
+  tags:
+  - DeFi
+  - WebSocket
+  - Real-time
+  - Streaming
+  - Market Data
+  properties:
+  - type: Documentation
     url: https://api-docs.aevo.xyz/
-  - type: GitHub Organization
-    url: https://github.com/ribbon-finance
-  - type: Website
-    url: https://www.ribbon.finance/
-  - type: Blog
-    url: https://ribbonfinance.medium.com/
-  - type: Governance
-    url: https://gov.ribbon.finance/
-  - type: Plans
-    url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/plans/plans.yml
   - type: RateLimits
-    url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/rate-limits/rate-limits.yml
-  - type: FinOps
-    url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/finops/finops.yml
-  - type: JSONLd
-    url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/json-ld/ribbon-finance.json
-
+    url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/rate-limits/aevo-websocket.yml
+  contact:
+  - FN: Aevo Support
+    url: https://docs.aevo.xyz/
+    email: ''
+- name: Ribbon Finance Subgraph API
+  description: GraphQL API hosted on The Graph protocol providing indexed on-chain
+    data for Ribbon Finance vaults including vault performance metrics, historical
+    pricing per share, fee collection data, premium earnings, and vault APY tracking
+    for Theta Vaults and other Ribbon products on Ethereum mainnet.
+  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.ribbon.finance/developers/ribbon-subgraph
+  baseURL: https://thegraph.com/explorer/subgraph
+  tags:
+  - DeFi
+  - GraphQL
+  - Subgraph
+  - On-chain Data
+  - Vaults
+  properties:
+  - type: Documentation
+    url: https://docs.ribbon.finance/developers/ribbon-subgraph
+  - url: graphql/ribbon-finance-graphql.md
+    type: GraphQL
+  contact:
+  - FN: Ribbon Finance Developers
+    url: https://github.com/ribbon-finance
+    email: ''
+common:
+- type: Documentation
+  url: https://docs.ribbon.finance/
+- type: Documentation
+  url: https://docs.aevo.xyz/
+- type: API Reference
+  url: https://api-docs.aevo.xyz/
+- type: GitHub Organization
+  url: https://github.com/ribbon-finance
+- type: Website
+  url: https://www.ribbon.finance/
+- type: Blog
+  url: https://ribbonfinance.medium.com/
+- type: Governance
+  url: https://gov.ribbon.finance/
+- type: Plans
+  url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/plans/plans.yml
+- type: RateLimits
+  url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/rate-limits/rate-limits.yml
+- type: FinOps
+  url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/finops/finops.yml
+- type: JSONLd
+  url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/json-ld/ribbon-finance.json
 maintainers:
-  - FN: API Evangelist
-    url: https://apievangelist.com
-    email: info@apievangelist.com
+- FN: API Evangelist
+  url: https://apievangelist.com
+  email: info@apievangelist.com
