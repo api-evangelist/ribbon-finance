@@ -1,0 +1,62 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Organization",
+  "name": "Ribbon Finance",
+  "description": "Ribbon Finance is a DeFi structured products platform that helps users access crypto structured products through automated options strategies. The platform offers Theta Vaults for covered calls and cash-secured puts, Ribbon Earn for yield optimization, and Ribbon Lend for unsecured lending. Ribbon Finance merged with Aevo, a high-performance Layer-2 order-book decentralized exchange for options and perpetuals trading.",
+  "url": "https://www.ribbon.finance/",
+  "sameAs": [
+    "https://github.com/ribbon-finance",
+    "https://ribbonfinance.medium.com/",
+    "https://docs.ribbon.finance/",
+    "https://docs.aevo.xyz/"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.ribbon.finance/"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Theta Vaults",
+      "description": "Decentralized Options Vaults (DOVs) for covered calls and cash-secured puts strategies"
+    },
+    {
+      "@type": "Offer",
+      "name": "Ribbon Earn",
+      "description": "Yield optimization products for crypto assets"
+    },
+    {
+      "@type": "Offer",
+      "name": "Ribbon Lend",
+      "description": "Uncollateralized lending marketplace for institutional borrowers"
+    },
+    {
+      "@type": "Offer",
+      "name": "Aevo Exchange",
+      "description": "High-performance Layer-2 decentralized exchange for options and perpetuals trading"
+    }
+  ],
+  "potentialAction": [
+    {
+      "@type": "Action",
+      "name": "Access Aevo Public REST API",
+      "target": "https://api.aevo.xyz"
+    },
+    {
+      "@type": "Action",
+      "name": "Access WebSocket API",
+      "target": "wss://ws.aevo.xyz"
+    }
+  ],
+  "knowsAbout": [
+    "DeFi",
+    "Decentralized Finance",
+    "Options Trading",
+    "Perpetuals",
+    "Structured Products",
+    "Ethereum",
+    "Layer 2",
+    "Yield Optimization",
+    "Crypto Vaults"
+  ]
+}

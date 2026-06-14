@@ -35,7 +35,7 @@ apis:
       - type: Documentation
         url: https://api-docs.aevo.xyz/reference/overview
       - type: OpenAPI
-        url: https://api-docs.aevo.xyz/llms.txt
+        url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/openapi/aevo-public-rest-api.json
     contact:
       - FN: Aevo Support
         url: https://docs.aevo.xyz/
@@ -57,6 +57,8 @@ apis:
         url: https://api-docs.aevo.xyz/reference/overview
       - type: Authentication
         url: https://api-docs.aevo.xyz/reference/authentication
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/openapi/aevo-private-rest-api.json
     contact:
       - FN: Aevo Support
         url: https://docs.aevo.xyz/
@@ -123,6 +125,8 @@ common:
     url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/rate-limits/rate-limits.yml
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/finops/finops.yml
+  - type: JSONLd
+    url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/json-ld/ribbon-finance.json
 
 maintainers:
   - FN: API Evangelist
