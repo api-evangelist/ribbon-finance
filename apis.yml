@@ -7,7 +7,7 @@ description: Ribbon Finance is a DeFi structured products platform that helps us
   exchange for options and perpetuals trading, providing REST and WebSocket APIs for
   querying vault performance, options strategies, yield data, and live exchange trading
   data.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/apis.yml
 version: '0.19'
 created: '2026-06-14'
@@ -29,7 +29,7 @@ apis:
     evolved from Ribbon Finance) providing market data, vault statistics, options
     pricing, funding rates, and other openly available trading information. No authentication
     required for these endpoints.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://api-docs.aevo.xyz/
   baseURL: https://api.aevo.xyz
   tags:
@@ -52,7 +52,7 @@ apis:
     order placement and management, position tracking, portfolio data, transfers,
     withdrawals, and trading history. Requires AEVO-KEY and AEVO-SECRET authentication
     headers obtained via cryptographic key registration.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://api-docs.aevo.xyz/
   baseURL: https://api.aevo.xyz
   tags:
@@ -77,7 +77,7 @@ apis:
     for orderbook updates, trade feeds, position fills, index price updates, funding
     rates, and ticker information. Supports both public and authenticated private
     channels.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://api-docs.aevo.xyz/
   baseURL: wss://ws.aevo.xyz
   tags:
@@ -100,7 +100,7 @@ apis:
     data for Ribbon Finance vaults including vault performance metrics, historical
     pricing per share, fee collection data, premium earnings, and vault APY tracking
     for Theta Vaults and other Ribbon products on Ethereum mainnet.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.ribbon.finance/developers/ribbon-subgraph
   baseURL: https://thegraph.com/explorer/subgraph
   tags:
