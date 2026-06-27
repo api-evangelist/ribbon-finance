@@ -2,6 +2,13 @@
   "repo": "ribbon-finance",
   "feeds": [
     {
+      "source": "https://ribbonfinance.medium.com/feed",
+      "feed_url": "https://ribbonfinance.medium.com/feed",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://www.ribbon.finance/",
       "feed_url": "https://www.ribbon.finance/",
       "title": "",
@@ -10,5 +17,5 @@
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:03:07Z"
 }

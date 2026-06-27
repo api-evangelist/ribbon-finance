@@ -123,9 +123,9 @@ common:
   url: https://docs.ribbon.finance/
 - type: Documentation
   url: https://docs.aevo.xyz/
-- type: API Reference
+- type: APIReference
   url: https://api-docs.aevo.xyz/
-- type: GitHub Organization
+- type: GitHubOrganization
   url: https://github.com/ribbon-finance
 - type: Website
   url: https://www.ribbon.finance/
@@ -139,7 +139,7 @@ common:
   url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/rate-limits/rate-limits.yml
 - type: FinOps
   url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/finops/finops.yml
-- type: JSONLd
+- type: JSONLD
   url: https://raw.githubusercontent.com/api-evangelist/ribbon-finance/refs/heads/main/json-ld/ribbon-finance.json
 maintainers:
 - FN: API Evangelist
