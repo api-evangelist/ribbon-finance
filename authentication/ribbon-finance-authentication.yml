@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/aevo-private-rest-api.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: AevoKey
+  type: apiKey
+  in: header
+  parameter: AEVO-KEY
+  description: API key obtained from Aevo account settings
+  sources:
+  - openapi/aevo-private-rest-api.json
+- name: AevoSecret
+  type: apiKey
+  in: header
+  parameter: AEVO-SECRET
+  description: API secret obtained from Aevo account settings
+  sources:
+  - openapi/aevo-private-rest-api.json

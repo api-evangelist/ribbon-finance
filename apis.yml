@@ -119,6 +119,10 @@ apis:
     url: https://github.com/ribbon-finance
     email: ''
 common:
+- type: DomainSecurity
+  url: security/ribbon-finance-domain-security.yml
+- type: Authentication
+  url: authentication/ribbon-finance-authentication.yml
 - type: Documentation
   url: https://docs.ribbon.finance/
 - type: Documentation
