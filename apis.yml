@@ -119,6 +119,8 @@ apis:
     url: https://github.com/ribbon-finance
     email: ''
 common:
+- type: AgenticAccess
+  url: agentic-access/ribbon-finance-agentic-access.yml
 - type: DomainSecurity
   url: security/ribbon-finance-domain-security.yml
 - type: Authentication
