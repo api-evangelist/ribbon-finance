@@ -1,0 +1,180 @@
+openapi: 3.0.3
+info:
+  title: Aevo Exchange Private REST Account Statistics API
+  description: Authenticated REST API for Aevo exchange providing account management, order placement and management, position tracking, portfolio data, transfers, withdrawals, and trading history. Requires AEVO-KEY and AEVO-SECRET authentication headers obtained via cryptographic key registration.
+  version: 1.0.0
+  contact:
+    name: Aevo Support
+    url: https://docs.aevo.xyz/
+servers:
+- url: https://api.aevo.xyz
+  description: Aevo Exchange production server
+security:
+- AevoKey: []
+  AevoSecret: []
+tags:
+- name: Statistics
+  description: Exchange statistics and analytics
+paths:
+  /statistics:
+    get:
+      tags:
+      - Statistics
+      summary: Get exchange statistics
+      description: Returns aggregated trading statistics including volume, open interest, and price data.
+      operationId: getStatistics
+      parameters:
+      - name: asset
+        in: query
+        required: false
+        description: Name of underlying asset.
+        schema:
+          type: string
+          example: ETH
+      - name: instrument_type
+        in: query
+        required: false
+        description: Type of instrument.
+        schema:
+          type: string
+          enum:
+          - OPTION
+          - PERPETUAL
+          - SPOT
+      - name: end_time
+        in: query
+        required: false
+        description: Entries created after end time are excluded in UNIX nanoseconds.
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Exchange statistics
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - daily_volume
+                - daily_buy_volume
+                - daily_sell_volume
+                properties:
+                  daily_volume:
+                    type: string
+                  daily_buy_volume:
+                    type: string
+                  daily_sell_volume:
+                    type: string
+                  asset:
+                    type: string
+                  open_interest:
+                    type: object
+                    properties:
+                      calls:
+                        type: string
+                      puts:
+                        type: string
+                      total:
+                        type: string
+                  daily_volume_premium:
+                    type: string
+                  total_volume:
+                    type: string
+                  total_volume_premium:
+                    type: string
+                  daily_volume_contracts:
+                    type: string
+                  index_price:
+                    type: string
+                  index_daily_change:
+                    type: string
+                  mark_price:
+                    type: string
+                  mark_price_24h_ago:
+                    type: string
+                  mark_daily_change:
+                    type: string
+                  funding_daily_avg:
+                    type: string
+                  put_call_ratio:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /time:
+    get:
+      tags:
+      - Statistics
+      summary: Get server time
+      description: Returns the current server time. Used for timestamp synchronization.
+      operationId: getTime
+      responses:
+        '200':
+          description: Server time
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  timestamp:
+                    type: string
+                    description: UNIX timestamp in nanoseconds
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /coingecko-statistics:
+    get:
+      tags:
+      - Statistics
+      summary: Get CoinGecko statistics
+      description: Returns exchange statistics in CoinGecko format.
+      operationId: getCoinGeckoStatistics
+      responses:
+        '200':
+          description: CoinGecko-compatible statistics
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          $ref: '#/components/responses/InternalError'
+components:
+  responses:
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Malformed request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: ERR_MALFORMED_REQUEST
+  securitySchemes:
+    AevoKey:
+      type: apiKey
+      in: header
+      name: AEVO-KEY
+      description: API key obtained from Aevo account settings
+    AevoSecret:
+      type: apiKey
+      in: header
+      name: AEVO-SECRET
+      description: API secret obtained from Aevo account settings
