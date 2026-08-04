@@ -1,0 +1,905 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Aevo Exchange Private REST API",
+    "description": "Authenticated REST API for Aevo exchange providing account management, order placement and management, position tracking, portfolio data, transfers, withdrawals, and trading history. Requires AEVO-KEY and AEVO-SECRET authentication headers obtained via cryptographic key registration.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Aevo Support",
+      "url": "https://docs.aevo.xyz/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.aevo.xyz",
+      "description": "Aevo Exchange production server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Account",
+      "description": "Account management endpoints"
+    },
+    {
+      "name": "Orders",
+      "description": "Order management endpoints"
+    },
+    {
+      "name": "Positions",
+      "description": "Position and portfolio endpoints"
+    },
+    {
+      "name": "Trade History",
+      "description": "Trade and transaction history endpoints"
+    },
+    {
+      "name": "API Keys",
+      "description": "API key management"
+    }
+  ],
+  "security": [
+    {
+      "AevoKey": [],
+      "AevoSecret": []
+    }
+  ],
+  "paths": {
+    "/account": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Get account details",
+        "description": "Returns comprehensive account information including balances, positions, margins, collateral, and API key configuration.",
+        "operationId": "getAccount",
+        "responses": {
+          "200": {
+            "description": "Account details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountDetails"
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "Get open orders",
+        "description": "Returns all open orders for the authenticated account.",
+        "operationId": "getOrders",
+        "responses": {
+          "200": {
+            "description": "List of open orders",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Order" }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      },
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Create order",
+        "description": "Places a new order on the exchange. Requires a cryptographically signed payload.",
+        "operationId": "postOrders",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Order created successfully",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Order" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      },
+      "delete": {
+        "tags": ["Orders"],
+        "summary": "Cancel all orders",
+        "description": "Cancels all open orders for the authenticated account.",
+        "operationId": "deleteOrdersAll",
+        "responses": {
+          "200": {
+            "description": "All orders cancelled"
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/orders/{order_id}": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "Get order by ID",
+        "description": "Returns details for a specific order.",
+        "operationId": "getOrderById",
+        "parameters": [
+          {
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "description": "Order hash identifier.",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order details",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Order" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      },
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Amend order",
+        "description": "Amends an existing order.",
+        "operationId": "amendOrder",
+        "parameters": [
+          {
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amount": { "type": "string" },
+                  "limit_price": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Order amended",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Order" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      },
+      "delete": {
+        "tags": ["Orders"],
+        "summary": "Cancel order",
+        "description": "Cancels a specific order by ID.",
+        "operationId": "deleteOrder",
+        "parameters": [
+          {
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order cancelled"
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/order-history": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "Get order history",
+        "description": "Returns historical orders for the authenticated account.",
+        "operationId": "getOrderHistory",
+        "parameters": [
+          {
+            "name": "start_time",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer" }
+          },
+          {
+            "name": "end_time",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 10, "maximum": 50 }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 0 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": { "type": "integer" },
+                    "order_history": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Order" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/batch-orders": {
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Place batch orders",
+        "description": "Places multiple orders in a single request.",
+        "operationId": "postBatchOrders",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "orders": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/CreateOrderRequest" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Batch orders created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Order" }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/positions": {
+      "get": {
+        "tags": ["Positions"],
+        "summary": "Get open positions",
+        "description": "Returns all open positions for the authenticated account including Greeks, margins, and liquidation information.",
+        "operationId": "getPositions",
+        "responses": {
+          "200": {
+            "description": "Open positions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "account": {
+                      "type": "string",
+                      "description": "Ethereum address"
+                    },
+                    "positions": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Position" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/portfolio": {
+      "get": {
+        "tags": ["Positions"],
+        "summary": "Get portfolio",
+        "description": "Returns portfolio-level information for the authenticated account.",
+        "operationId": "getPortfolio",
+        "responses": {
+          "200": {
+            "description": "Portfolio data",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/trade-history": {
+      "get": {
+        "tags": ["Trade History"],
+        "summary": "Get trade history",
+        "description": "Returns historical trade records for the authenticated account.",
+        "operationId": "getTradeHistory",
+        "parameters": [
+          {
+            "name": "start_time",
+            "in": "query",
+            "required": true,
+            "description": "Entries created prior to start time are excluded. UNIX nanoseconds.",
+            "schema": { "type": "integer" }
+          },
+          {
+            "name": "asset",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "example": "ETH" }
+          },
+          {
+            "name": "end_time",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer" }
+          },
+          {
+            "name": "instrument_type",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "enum": ["OPTION", "PERPETUAL", "SPOT"] }
+          },
+          {
+            "name": "option_type",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "enum": ["put", "call"] }
+          },
+          {
+            "name": "trade_types",
+            "in": "query",
+            "required": false,
+            "description": "Filter by trade type.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["trade", "liquidation", "settlement", "funding"]
+              }
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 10, "maximum": 50 }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 0 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Trade history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "description": "Total number of rows matching the query"
+                    },
+                    "trade_history": {
+                      "type": "array",
+                      "items": { "type": "object" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/transaction-history": {
+      "get": {
+        "tags": ["Trade History"],
+        "summary": "Get transaction history",
+        "description": "Returns historical transactions (deposits, withdrawals, transfers) for the authenticated account.",
+        "operationId": "getTransactionHistory",
+        "parameters": [
+          {
+            "name": "start_time",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer" }
+          },
+          {
+            "name": "end_time",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 10, "maximum": 50 }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 0 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": { "type": "integer" },
+                    "transaction_history": {
+                      "type": "array",
+                      "items": { "type": "object" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "tags": ["Account"],
+        "summary": "Register signing key",
+        "description": "Registers a new signing key for order signing.",
+        "operationId": "postRegister",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "account": { "type": "string", "description": "Ethereum address" },
+                  "signing_key": { "type": "string" },
+                  "expiry": { "type": "string" },
+                  "account_signature": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Signing key registered" },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/withdraw": {
+      "post": {
+        "tags": ["Account"],
+        "summary": "Withdraw funds",
+        "description": "Initiates a withdrawal from the Aevo exchange.",
+        "operationId": "postWithdraw",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "account": { "type": "string" },
+                  "amount": { "type": "string" },
+                  "asset": { "type": "string" },
+                  "signature": { "type": "string" },
+                  "salt": { "type": "string" },
+                  "timestamp": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Withdrawal initiated" },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/transfer": {
+      "post": {
+        "tags": ["Account"],
+        "summary": "Transfer funds",
+        "description": "Transfers funds between accounts or sub-accounts.",
+        "operationId": "postTransfer",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "account": { "type": "string" },
+                  "amount": { "type": "string" },
+                  "asset": { "type": "string" },
+                  "receiver": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Transfer completed" },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/api-key": {
+      "get": {
+        "tags": ["API Keys"],
+        "summary": "Get API keys",
+        "description": "Returns the API keys associated with the authenticated account.",
+        "operationId": "getApiKey",
+        "responses": {
+          "200": {
+            "description": "API key list",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      },
+      "post": {
+        "tags": ["API Keys"],
+        "summary": "Create API key",
+        "description": "Creates a new API key for the authenticated account.",
+        "operationId": "postApiKey",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "permissions": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "API key created" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      },
+      "delete": {
+        "tags": ["API Keys"],
+        "summary": "Delete API key",
+        "description": "Deletes an API key from the authenticated account.",
+        "operationId": "deleteApiKey",
+        "responses": {
+          "200": { "description": "API key deleted" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "AevoKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "AEVO-KEY",
+        "description": "API key obtained from Aevo account settings"
+      },
+      "AevoSecret": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "AEVO-SECRET",
+        "description": "API secret obtained from Aevo account settings"
+      }
+    },
+    "schemas": {
+      "AccountDetails": {
+        "type": "object",
+        "properties": {
+          "account": { "type": "string", "description": "Ethereum address" },
+          "username": { "type": "string" },
+          "email_address": { "type": "string" },
+          "account_type": {
+            "type": "string",
+            "enum": ["STANDARD", "MARKET_MAKER", "MANAGED_ACCOUNT"]
+          },
+          "equity": { "type": "string" },
+          "balance": { "type": "string" },
+          "available_balance": { "type": "string" },
+          "available_margin": { "type": "string" },
+          "initial_margin": { "type": "string" },
+          "maintenance_margin": { "type": "string" },
+          "collateral": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Collateral" }
+          },
+          "positions": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Position" }
+          },
+          "in_liquidation": { "type": "boolean" },
+          "portfolio": { "type": "boolean" }
+        }
+      },
+      "Collateral": {
+        "type": "object",
+        "properties": {
+          "collateral_asset": {
+            "type": "string",
+            "enum": ["USDC", "USDT", "WETH", "WBTC", "aeUSD", "SDAI", "weETH"]
+          },
+          "collateral_value": { "type": "string" },
+          "margin_value": { "type": "string" },
+          "balance": { "type": "string" },
+          "available_balance": { "type": "string" },
+          "pending_withdrawals": { "type": "string" }
+        }
+      },
+      "Position": {
+        "type": "object",
+        "properties": {
+          "instrument_id": { "type": "string" },
+          "instrument_name": { "type": "string" },
+          "instrument_type": {
+            "type": "string",
+            "enum": ["OPTION", "PERPETUAL", "SPOT"]
+          },
+          "option": {
+            "type": "object",
+            "properties": {
+              "strike": { "type": "string" },
+              "option_type": { "type": "string", "enum": ["put", "call"] },
+              "expiry": { "type": "string" },
+              "iv": { "type": "string" },
+              "delta": { "type": "string" },
+              "theta": { "type": "string" },
+              "vega": { "type": "string" },
+              "rho": { "type": "string" },
+              "gamma": { "type": "string" }
+            }
+          },
+          "asset": { "type": "string" },
+          "amount": { "type": "string" },
+          "side": { "type": "string", "enum": ["buy", "sell"] },
+          "mark_price": { "type": "string" },
+          "avg_entry_price": { "type": "string" },
+          "unrealized_pnl": { "type": "string" },
+          "initial_margin": { "type": "string" },
+          "maintenance_margin": { "type": "string" },
+          "margin_type": { "type": "string", "enum": ["CROSS", "ISOLATED"] },
+          "adl_rank": { "type": "string", "enum": ["na", "low", "medium", "high"] },
+          "liquidation_price": { "type": "string" },
+          "leverage": { "type": "string" }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "order_id": { "type": "string" },
+          "account": { "type": "string" },
+          "instrument_id": { "type": "string" },
+          "instrument_name": { "type": "string" },
+          "instrument_type": {
+            "type": "string",
+            "enum": ["OPTION", "PERPETUAL", "SPOT"]
+          },
+          "order_type": { "type": "string", "enum": ["limit", "market"] },
+          "side": { "type": "string", "enum": ["buy", "sell"] },
+          "amount": { "type": "string" },
+          "price": { "type": "string" },
+          "avg_price": { "type": "string" },
+          "filled": { "type": "string" },
+          "order_status": {
+            "type": "string",
+            "enum": ["filled", "partial", "opened", "cancelled", "expired", "rejected", "stop_order"]
+          },
+          "post_only": { "type": "boolean" },
+          "reduce_only": { "type": "boolean" },
+          "time_in_force": { "type": "string", "enum": ["GTC", "IOC"] },
+          "initial_margin": { "type": "string" },
+          "option_type": { "type": "string", "enum": ["call", "put"] },
+          "iv": { "type": "string" },
+          "expiry": { "type": "string" },
+          "strike": { "type": "string" },
+          "created_timestamp": { "type": "string" },
+          "timestamp": { "type": "string" },
+          "system_type": {
+            "type": "string",
+            "enum": ["API", "WEB", "MOBILE_WEB", "MOBILE_APP"]
+          }
+        }
+      },
+      "CreateOrderRequest": {
+        "type": "object",
+        "required": ["instrument", "maker", "is_buy", "amount", "limit_price", "salt", "signature", "timestamp"],
+        "properties": {
+          "instrument": {
+            "type": "integer",
+            "description": "Instrument ID number"
+          },
+          "maker": {
+            "type": "string",
+            "description": "Ethereum address of account"
+          },
+          "is_buy": {
+            "type": "boolean",
+            "description": "True for long, false for short"
+          },
+          "amount": {
+            "type": "string",
+            "description": "Contract quantity in 6 decimals"
+          },
+          "limit_price": {
+            "type": "string",
+            "description": "Order price in 6 decimals"
+          },
+          "salt": {
+            "type": "string",
+            "description": "Random number for order uniqueness"
+          },
+          "signature": {
+            "type": "string",
+            "description": "Signed order payload hash"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "UNIX timestamp in seconds"
+          },
+          "post_only": { "type": "boolean" },
+          "reduce_only": { "type": "boolean" },
+          "time_in_force": { "type": "string", "enum": ["GTC", "IOC"] },
+          "mmp": { "type": "boolean" },
+          "stop": { "type": "string", "enum": ["STOP_LOSS", "TAKE_PROFIT"] },
+          "trigger": { "type": "number", "description": "Stop order trigger price" },
+          "close_position": { "type": "boolean" },
+          "partial_position": { "type": "boolean" },
+          "parent_order_id": { "type": "string" },
+          "perps_plus": { "type": "boolean" },
+          "self_trade_prevention": {
+            "type": "string",
+            "enum": ["EXPIRE_NONE", "EXPIRE_MAKER", "EXPIRE_TAKER"]
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": { "type": "string" }
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Malformed request",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Unauthorized - missing or invalid authentication",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+          }
+        }
+      },
+      "RateLimited": {
+        "description": "Rate limit exceeded",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+          }
+        }
+      },
+      "InternalError": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+          }
+        }
+      }
+    }
+  }
+}

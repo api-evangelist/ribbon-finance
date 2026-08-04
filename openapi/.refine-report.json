@@ -1,0 +1,28 @@
+{
+  "provider": "ribbon-finance",
+  "sources": [
+    "ribbon-finance-account-api-openapi.yml",
+    "ribbon-finance-api-keys-api-openapi.yml",
+    "ribbon-finance-instruments-api-openapi.yml",
+    "ribbon-finance-market-data-api-openapi.yml",
+    "ribbon-finance-orders-api-openapi.yml",
+    "ribbon-finance-positions-api-openapi.yml",
+    "ribbon-finance-statistics-api-openapi.yml",
+    "ribbon-finance-trade-history-api-openapi.yml"
+  ],
+  "outputs": [
+    "ribbon-finance-account-api-openapi.yml",
+    "ribbon-finance-api-keys-api-openapi.yml",
+    "ribbon-finance-instruments-api-openapi.yml",
+    "ribbon-finance-market-data-api-openapi.yml",
+    "ribbon-finance-orders-api-openapi.yml",
+    "ribbon-finance-positions-api-openapi.yml",
+    "ribbon-finance-statistics-api-openapi.yml",
+    "ribbon-finance-trade-history-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
