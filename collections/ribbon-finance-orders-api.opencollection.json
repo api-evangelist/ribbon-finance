@@ -1,0 +1,170 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aevo Exchange Private REST Account Orders API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AEVO-KEY",
+      "value": "{{AEVO-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get open orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/orders"
+          },
+          "docs": "Returns all open orders for the authenticated account."
+        },
+        {
+          "info": {
+            "name": "Create order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aevo.xyz/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Places a new order on the exchange. Requires a cryptographically signed payload."
+        },
+        {
+          "info": {
+            "name": "Cancel all orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aevo.xyz/orders"
+          },
+          "docs": "Cancels all open orders for the authenticated account."
+        },
+        {
+          "info": {
+            "name": "Get order by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/orders/:order_id",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path",
+                "description": "Order hash identifier."
+              }
+            ]
+          },
+          "docs": "Returns details for a specific order."
+        },
+        {
+          "info": {
+            "name": "Amend order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aevo.xyz/orders/:order_id",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Amends an existing order."
+        },
+        {
+          "info": {
+            "name": "Cancel order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aevo.xyz/orders/:order_id",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancels a specific order by ID."
+        },
+        {
+          "info": {
+            "name": "Get order history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/order-history",
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns historical orders for the authenticated account."
+        },
+        {
+          "info": {
+            "name": "Place batch orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aevo.xyz/batch-orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Places multiple orders in a single request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

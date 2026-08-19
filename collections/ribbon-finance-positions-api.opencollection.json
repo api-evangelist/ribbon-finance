@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aevo Exchange Private REST Account Positions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AEVO-KEY",
+      "value": "{{AEVO-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Positions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get open positions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/positions"
+          },
+          "docs": "Returns all open positions for the authenticated account including Greeks, margins, and liquidation information."
+        },
+        {
+          "info": {
+            "name": "Get portfolio",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/portfolio"
+          },
+          "docs": "Returns portfolio-level information for the authenticated account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

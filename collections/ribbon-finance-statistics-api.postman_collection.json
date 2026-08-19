@@ -1,0 +1,569 @@
+{
+  "item": [
+    {
+      "id": "fca2e351-57de-458a-b7a7-dce8fb916b78",
+      "name": "Statistics",
+      "description": {
+        "content": "Exchange statistics and analytics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "73aae863-fd74-4052-9226-648442ccad24",
+          "name": "Get exchange statistics",
+          "request": {
+            "name": "Get exchange statistics",
+            "description": {
+              "content": "Returns aggregated trading statistics including volume, open interest, and price data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "statistics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "asset",
+                  "value": "<string>",
+                  "description": "Name of underlying asset."
+                },
+                {
+                  "disabled": false,
+                  "key": "instrument_type",
+                  "value": "<string>",
+                  "description": "Type of instrument."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<integer>",
+                  "description": "Entries created after end time are excluded in UNIX nanoseconds."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d751eee-4182-4d1e-9572-0a31ff6958ca",
+              "name": "Exchange statistics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asset",
+                      "value": "ETH"
+                    },
+                    {
+                      "key": "instrument_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"daily_volume\": \"string\",\n  \"daily_buy_volume\": \"string\",\n  \"daily_sell_volume\": \"string\",\n  \"asset\": \"string\",\n  \"open_interest\": {\n    \"calls\": \"string\",\n    \"puts\": \"string\",\n    \"total\": \"string\"\n  },\n  \"daily_volume_premium\": \"string\",\n  \"total_volume\": \"string\",\n  \"total_volume_premium\": \"string\",\n  \"daily_volume_contracts\": \"string\",\n  \"index_price\": \"string\",\n  \"index_daily_change\": \"string\",\n  \"mark_price\": \"string\",\n  \"mark_price_24h_ago\": \"string\",\n  \"mark_daily_change\": \"string\",\n  \"funding_daily_avg\": \"string\",\n  \"put_call_ratio\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ef4a907-2de0-4cfc-963c-55dcb5125cbe",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asset",
+                      "value": "ETH"
+                    },
+                    {
+                      "key": "instrument_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ERR_MALFORMED_REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64abd6b0-d903-4305-a50f-43e1f1cbcc5f",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asset",
+                      "value": "ETH"
+                    },
+                    {
+                      "key": "instrument_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ERR_MALFORMED_REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91d9c0e9-17a1-4e66-87f8-368611e5b86f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asset",
+                      "value": "ETH"
+                    },
+                    {
+                      "key": "instrument_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ERR_MALFORMED_REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c66b832-055e-497c-8c48-4b914616838c",
+          "name": "Get server time",
+          "request": {
+            "name": "Get server time",
+            "description": {
+              "content": "Returns the current server time. Used for timestamp synchronization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "time"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "682f946c-704f-433f-8948-59050c22145d",
+              "name": "Server time",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "time"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "294b1b51-39f0-4b28-ab37-cb6a47e909e7",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "time"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ERR_MALFORMED_REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e50239ba-1940-4acd-8005-7227f33460f0",
+          "name": "Get CoinGecko statistics",
+          "request": {
+            "name": "Get CoinGecko statistics",
+            "description": {
+              "content": "Returns exchange statistics in CoinGecko format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "coingecko-statistics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "35df5066-5b2f-430b-aeb9-f540725b3e24",
+              "name": "CoinGecko-compatible statistics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coingecko-statistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68157e18-d48e-40fb-aa97-a2fd27978463",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coingecko-statistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ERR_MALFORMED_REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.aevo.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "AEVO-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "53ebd434-ff33-48c0-96af-78d789794cee",
+    "name": "Aevo Exchange Private REST Account Statistics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Authenticated REST API for Aevo exchange providing account management, order placement and management, position tracking, portfolio data, transfers, withdrawals, and trading history. Requires AEVO-KEY and AEVO-SECRET authentication headers obtained via cryptographic key registration.\n\nContact Support:\n Name: Aevo Support",
+      "type": "text/plain"
+    }
+  }
+}

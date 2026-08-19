@@ -1,0 +1,829 @@
+{
+  "item": [
+    {
+      "id": "bf1b7c6a-2c4d-47d7-8b63-251a39a7f6ed",
+      "name": "Trade History",
+      "description": {
+        "content": "Trade and transaction history endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9e1fa1ea-f541-4eb2-94ce-78f7a0e3eebe",
+          "name": "Get trade history",
+          "request": {
+            "name": "Get trade history",
+            "description": {
+              "content": "Returns historical trade records for the authenticated account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trade-history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<integer>",
+                  "description": "(Required) Entries created prior to start time are excluded. UNIX nanoseconds."
+                },
+                {
+                  "disabled": false,
+                  "key": "asset",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "instrument_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "option_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "trade_types",
+                  "value": "<string>",
+                  "description": "Filter by trade type."
+                },
+                {
+                  "disabled": false,
+                  "key": "trade_types",
+                  "value": "<string>",
+                  "description": "Filter by trade type."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f00940a6-792c-41ce-b9d9-2ed09b5e38a5",
+              "name": "Trade history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trade-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "asset",
+                      "value": "ETH"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "instrument_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "option_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trade_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trade_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 8066\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ddc69c4-106c-4bfd-9784-d64a7450fe4f",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trade-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "asset",
+                      "value": "ETH"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "instrument_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "option_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trade_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trade_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7c45801-c06f-4373-b0f0-1b41b7c30d12",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trade-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "asset",
+                      "value": "ETH"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "instrument_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "option_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trade_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trade_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05d5ee2b-c984-4159-8c72-d7960772f53e",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trade-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "asset",
+                      "value": "ETH"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "instrument_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "option_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trade_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trade_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "feffb29d-f164-4e8c-ab92-5f58e4e596c1",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trade-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "asset",
+                      "value": "ETH"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "instrument_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "option_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trade_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trade_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef39c050-7376-4818-a694-c89a72fa0aa9",
+          "name": "Get transaction history",
+          "request": {
+            "name": "Get transaction history",
+            "description": {
+              "content": "Returns historical transactions (deposits, withdrawals, transfers) for the authenticated account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transaction-history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fe2ca50-cbec-475e-bd9b-fe92f6cf93c3",
+              "name": "Transaction history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transaction-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 646\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b00f370-a649-4d18-a438-344e75c914f0",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transaction-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4530f1f-9feb-4f3b-89ff-a8d3de91a399",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transaction-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8618c7c6-7ff0-4b43-b5d8-25110328b9a0",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transaction-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "AEVO-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.aevo.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "AEVO-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "026995c2-e949-47dc-b173-da0c2d1c2f01",
+    "name": "Aevo Exchange Private REST Account Trade History API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Authenticated REST API for Aevo exchange providing account management, order placement and management, position tracking, portfolio data, transfers, withdrawals, and trading history. Requires AEVO-KEY and AEVO-SECRET authentication headers obtained via cryptographic key registration.\n\nContact Support:\n Name: Aevo Support",
+      "type": "text/plain"
+    }
+  }
+}

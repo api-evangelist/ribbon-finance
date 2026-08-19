@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aevo Exchange Private REST Account Trade History API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AEVO-KEY",
+      "value": "{{AEVO-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trade History",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get trade history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/trade-history",
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Entries created prior to start time are excluded. UNIX nanoseconds."
+              },
+              {
+                "name": "asset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "instrument_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "option_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "trade_types",
+                "value": "",
+                "type": "query",
+                "description": "Filter by trade type."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns historical trade records for the authenticated account."
+        },
+        {
+          "info": {
+            "name": "Get transaction history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/transaction-history",
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns historical transactions (deposits, withdrawals, transfers) for the authenticated account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,241 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aevo Exchange Private REST Account Market Data API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AEVO-KEY",
+      "value": "{{AEVO-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Market Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get orderbook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/orderbook",
+            "params": [
+              {
+                "name": "instrument_name",
+                "value": "",
+                "type": "query",
+                "description": "Instrument name."
+              }
+            ]
+          },
+          "docs": "Returns the orderbook for a given instrument symbol including bids, asks, and implied volatility."
+        },
+        {
+          "info": {
+            "name": "Get index price",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/index",
+            "params": [
+              {
+                "name": "asset",
+                "value": "",
+                "type": "query",
+                "description": "Name of underlying asset."
+              }
+            ]
+          },
+          "docs": "Returns the current index price for a given underlying asset."
+        },
+        {
+          "info": {
+            "name": "Get index price history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/index-history",
+            "params": [
+              {
+                "name": "asset",
+                "value": "",
+                "type": "query",
+                "description": "Name of underlying asset."
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Start time in UNIX nanoseconds."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "End time in UNIX nanoseconds."
+              }
+            ]
+          },
+          "docs": "Returns historical index price data for a given underlying asset."
+        },
+        {
+          "info": {
+            "name": "Get funding rate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/funding",
+            "params": [
+              {
+                "name": "instrument_name",
+                "value": "",
+                "type": "query",
+                "description": "Instrument name."
+              }
+            ]
+          },
+          "docs": "Returns the current funding rate for a perpetual instrument."
+        },
+        {
+          "info": {
+            "name": "Get funding rate history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/funding-history",
+            "params": [
+              {
+                "name": "instrument_name",
+                "value": "",
+                "type": "query",
+                "description": "Instrument name."
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Start time in UNIX nanoseconds."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "End time in UNIX nanoseconds."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return."
+              }
+            ]
+          },
+          "docs": "Returns historical funding rate data for a perpetual instrument."
+        },
+        {
+          "info": {
+            "name": "Get mark price history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/mark-history",
+            "params": [
+              {
+                "name": "instrument_name",
+                "value": "",
+                "type": "query",
+                "description": "Instrument name."
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns historical mark price data for a given instrument."
+        },
+        {
+          "info": {
+            "name": "Get settlement history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/settlement-history",
+            "params": [
+              {
+                "name": "asset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns historical settlement price data."
+        },
+        {
+          "info": {
+            "name": "Get options history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/options-history",
+            "params": [
+              {
+                "name": "asset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns historical options trading data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

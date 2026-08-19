@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aevo Exchange Private REST Account Instruments API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AEVO-KEY",
+      "value": "{{AEVO-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Instruments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/markets",
+            "params": [
+              {
+                "name": "asset",
+                "value": "",
+                "type": "query",
+                "description": "Name of underlying asset."
+              },
+              {
+                "name": "instrument_type",
+                "value": "",
+                "type": "query",
+                "description": "Type of instrument."
+              }
+            ]
+          },
+          "docs": "Returns a list of all available instruments/markets on the exchange."
+        },
+        {
+          "info": {
+            "name": "Get available assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/assets"
+          },
+          "docs": "Returns a list of all available underlying assets on the exchange."
+        },
+        {
+          "info": {
+            "name": "Get available expiries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/expiries",
+            "params": [
+              {
+                "name": "asset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the list of available option expiry dates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

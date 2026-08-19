@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aevo Exchange Private REST Account API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AEVO-KEY",
+      "value": "{{AEVO-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get account details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/account"
+          },
+          "docs": "Returns comprehensive account information including balances, positions, margins, collateral, and API key configuration."
+        },
+        {
+          "info": {
+            "name": "Register signing key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aevo.xyz/register",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a new signing key for order signing."
+        },
+        {
+          "info": {
+            "name": "Withdraw funds",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aevo.xyz/withdraw",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates a withdrawal from the Aevo exchange."
+        },
+        {
+          "info": {
+            "name": "Transfer funds",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aevo.xyz/transfer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Transfers funds between accounts or sub-accounts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

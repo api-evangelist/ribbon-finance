@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aevo Exchange Private REST Account Statistics API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AEVO-KEY",
+      "value": "{{AEVO-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Statistics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get exchange statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/statistics",
+            "params": [
+              {
+                "name": "asset",
+                "value": "",
+                "type": "query",
+                "description": "Name of underlying asset."
+              },
+              {
+                "name": "instrument_type",
+                "value": "",
+                "type": "query",
+                "description": "Type of instrument."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Entries created after end time are excluded in UNIX nanoseconds."
+              }
+            ]
+          },
+          "docs": "Returns aggregated trading statistics including volume, open interest, and price data."
+        },
+        {
+          "info": {
+            "name": "Get server time",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/time"
+          },
+          "docs": "Returns the current server time. Used for timestamp synchronization."
+        },
+        {
+          "info": {
+            "name": "Get CoinGecko statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aevo.xyz/coingecko-statistics"
+          },
+          "docs": "Returns exchange statistics in CoinGecko format."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
