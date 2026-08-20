@@ -33,6 +33,16 @@ tags:
 - Structured Products
 - Ethereum
 - Layer 2
+- Vault
+- Perpetuals
+- Yield
+tags_raw:
+- DeFi
+- Finance
+- Options
+- Structured Products
+- Ethereum
+- Layer 2
 - Vaults
 - Perpetuals
 - Yield
@@ -46,6 +56,12 @@ apis:
   humanURL: https://api-docs.aevo.xyz/
   baseURL: wss://ws.aevo.xyz
   tags:
+  - DeFi
+  - WebSocket
+  - Real-Time
+  - Streaming
+  - Market Data
+  tags_raw:
   - DeFi
   - WebSocket
   - Real-time
@@ -70,6 +86,12 @@ apis:
   humanURL: https://docs.ribbon.finance/developers/ribbon-subgraph
   baseURL: https://thegraph.com/explorer/subgraph
   tags:
+  - DeFi
+  - GraphQL
+  - Subgraph
+  - On-Chain Data
+  - Vault
+  tags_raw:
   - DeFi
   - GraphQL
   - Subgraph
@@ -104,6 +126,8 @@ apis:
   humanURL: https://api-docs.aevo.xyz/
   baseURL: https://api.aevo.xyz
   tags:
+  - APIKeys
+  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI
@@ -146,6 +170,8 @@ apis:
   humanURL: https://api-docs.aevo.xyz/
   baseURL: https://api.aevo.xyz
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
