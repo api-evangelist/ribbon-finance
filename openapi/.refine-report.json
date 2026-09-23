@@ -1,28 +1,36 @@
 {
   "provider": "ribbon-finance",
   "sources": [
-    "ribbon-finance-account-api-openapi.yml",
-    "ribbon-finance-api-keys-api-openapi.yml",
-    "ribbon-finance-instruments-api-openapi.yml",
-    "ribbon-finance-market-data-api-openapi.yml",
-    "ribbon-finance-orders-api-openapi.yml",
-    "ribbon-finance-positions-api-openapi.yml",
-    "ribbon-finance-statistics-api-openapi.yml",
-    "ribbon-finance-trade-history-api-openapi.yml"
+    "_original/aevo-private-rest-api.json",
+    "_original/aevo-public-rest-api.json"
   ],
   "outputs": [
-    "ribbon-finance-account-api-openapi.yml",
     "ribbon-finance-api-keys-api-openapi.yml",
-    "ribbon-finance-instruments-api-openapi.yml",
-    "ribbon-finance-market-data-api-openapi.yml",
+    "ribbon-finance-account-api-openapi.yml",
     "ribbon-finance-orders-api-openapi.yml",
     "ribbon-finance-positions-api-openapi.yml",
-    "ribbon-finance-statistics-api-openapi.yml",
-    "ribbon-finance-trade-history-api-openapi.yml"
+    "ribbon-finance-trade-history-api-openapi.yml",
+    "ribbon-finance-instruments-api-openapi.yml",
+    "ribbon-finance-market-data-api-openapi.yml",
+    "ribbon-finance-statistics-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "aevo-private-rest-api.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "aevo-public-rest-api.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "ribbon-finance-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ribbon-finance-api-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ribbon-finance-instruments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ribbon-finance-market-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ribbon-finance-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ribbon-finance-positions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ribbon-finance-statistics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ribbon-finance-trade-history-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
