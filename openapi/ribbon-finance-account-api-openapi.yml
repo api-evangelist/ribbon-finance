@@ -136,11 +136,6 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
     AccountDetails:
       type: object
       properties:
@@ -203,6 +198,11 @@ components:
         available_balance:
           type: string
         pending_withdrawals:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        error:
           type: string
     Position:
       type: object
@@ -277,14 +277,14 @@ components:
         leverage:
           type: string
   responses:
-    RateLimited:
-      description: Rate limit exceeded
+    InternalError:
+      description: Internal server error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error
+    RateLimited:
+      description: Rate limit exceeded
       content:
         application/json:
           schema:

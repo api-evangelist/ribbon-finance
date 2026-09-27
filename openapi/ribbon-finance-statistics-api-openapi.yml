@@ -146,8 +146,8 @@ components:
           type: string
           example: ERR_MALFORMED_REQUEST
   responses:
-    RateLimited:
-      description: Rate limit exceeded
+    BadRequest:
+      description: Malformed request
       content:
         application/json:
           schema:
@@ -158,8 +158,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Malformed request
+    RateLimited:
+      description: Rate limit exceeded
       content:
         application/json:
           schema:
