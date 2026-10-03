@@ -396,12 +396,6 @@ components:
           type: string
           example: ERR_MALFORMED_REQUEST
   responses:
-    BadRequest:
-      description: Malformed request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     InternalError:
       description: Internal server error
       content:
@@ -410,6 +404,12 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     RateLimited:
       description: Rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Malformed request
       content:
         application/json:
           schema:

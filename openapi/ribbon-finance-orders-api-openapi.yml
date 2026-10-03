@@ -251,7 +251,106 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
+  responses:
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Malformed request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - missing or invalid authentication
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+    CreateOrderRequest:
+      type: object
+      required:
+      - instrument
+      - maker
+      - is_buy
+      - amount
+      - limit_price
+      - salt
+      - signature
+      - timestamp
+      properties:
+        instrument:
+          type: integer
+          description: Instrument ID number
+        maker:
+          type: string
+          description: Ethereum address of account
+        is_buy:
+          type: boolean
+          description: True for long, false for short
+        amount:
+          type: string
+          description: Contract quantity in 6 decimals
+        limit_price:
+          type: string
+          description: Order price in 6 decimals
+        salt:
+          type: string
+          description: Random number for order uniqueness
+        signature:
+          type: string
+          description: Signed order payload hash
+        timestamp:
+          type: string
+          description: UNIX timestamp in seconds
+        post_only:
+          type: boolean
+        reduce_only:
+          type: boolean
+        time_in_force:
+          type: string
+          enum:
+          - GTC
+          - IOC
+        mmp:
+          type: boolean
+        stop:
+          type: string
+          enum:
+          - STOP_LOSS
+          - TAKE_PROFIT
+        trigger:
+          type: number
+          description: Stop order trigger price
+        close_position:
+          type: boolean
+        partial_position:
+          type: boolean
+        parent_order_id:
+          type: string
+        perps_plus:
+          type: boolean
+        self_trade_prevention:
+          type: string
+          enum:
+          - EXPIRE_NONE
+          - EXPIRE_MAKER
+          - EXPIRE_TAKER
     Order:
       type: object
       properties:
@@ -330,105 +429,6 @@ components:
           - WEB
           - MOBILE_WEB
           - MOBILE_APP
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-    CreateOrderRequest:
-      type: object
-      required:
-      - instrument
-      - maker
-      - is_buy
-      - amount
-      - limit_price
-      - salt
-      - signature
-      - timestamp
-      properties:
-        instrument:
-          type: integer
-          description: Instrument ID number
-        maker:
-          type: string
-          description: Ethereum address of account
-        is_buy:
-          type: boolean
-          description: True for long, false for short
-        amount:
-          type: string
-          description: Contract quantity in 6 decimals
-        limit_price:
-          type: string
-          description: Order price in 6 decimals
-        salt:
-          type: string
-          description: Random number for order uniqueness
-        signature:
-          type: string
-          description: Signed order payload hash
-        timestamp:
-          type: string
-          description: UNIX timestamp in seconds
-        post_only:
-          type: boolean
-        reduce_only:
-          type: boolean
-        time_in_force:
-          type: string
-          enum:
-          - GTC
-          - IOC
-        mmp:
-          type: boolean
-        stop:
-          type: string
-          enum:
-          - STOP_LOSS
-          - TAKE_PROFIT
-        trigger:
-          type: number
-          description: Stop order trigger price
-        close_position:
-          type: boolean
-        partial_position:
-          type: boolean
-        parent_order_id:
-          type: string
-        perps_plus:
-          type: boolean
-        self_trade_prevention:
-          type: string
-          enum:
-          - EXPIRE_NONE
-          - EXPIRE_MAKER
-          - EXPIRE_TAKER
-  responses:
-    InternalError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    RateLimited:
-      description: Rate limit exceeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Malformed request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - missing or invalid authentication
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     AevoKey:
       type: apiKey

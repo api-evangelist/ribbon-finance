@@ -136,6 +136,29 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
+    Collateral:
+      type: object
+      properties:
+        collateral_asset:
+          type: string
+          enum:
+          - USDC
+          - USDT
+          - WETH
+          - WBTC
+          - aeUSD
+          - SDAI
+          - weETH
+        collateral_value:
+          type: string
+        margin_value:
+          type: string
+        balance:
+          type: string
+        available_balance:
+          type: string
+        pending_withdrawals:
+          type: string
     AccountDetails:
       type: object
       properties:
@@ -176,29 +199,6 @@ components:
           type: boolean
         portfolio:
           type: boolean
-    Collateral:
-      type: object
-      properties:
-        collateral_asset:
-          type: string
-          enum:
-          - USDC
-          - USDT
-          - WETH
-          - WBTC
-          - aeUSD
-          - SDAI
-          - weETH
-        collateral_value:
-          type: string
-        margin_value:
-          type: string
-        balance:
-          type: string
-        available_balance:
-          type: string
-        pending_withdrawals:
-          type: string
     ErrorResponse:
       type: object
       properties:
@@ -283,14 +283,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    RateLimited:
-      description: Rate limit exceeded
+    BadRequest:
+      description: Malformed request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Malformed request
+    RateLimited:
+      description: Rate limit exceeded
       content:
         application/json:
           schema:
