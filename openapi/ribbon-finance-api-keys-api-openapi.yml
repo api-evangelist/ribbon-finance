@@ -81,14 +81,14 @@ components:
         error:
           type: string
   responses:
-    InternalError:
-      description: Internal server error
+    Unauthorized:
+      description: Unauthorized - missing or invalid authentication
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - missing or invalid authentication
+    InternalError:
+      description: Internal server error
       content:
         application/json:
           schema:

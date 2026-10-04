@@ -136,29 +136,6 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
-    Collateral:
-      type: object
-      properties:
-        collateral_asset:
-          type: string
-          enum:
-          - USDC
-          - USDT
-          - WETH
-          - WBTC
-          - aeUSD
-          - SDAI
-          - weETH
-        collateral_value:
-          type: string
-        margin_value:
-          type: string
-        balance:
-          type: string
-        available_balance:
-          type: string
-        pending_withdrawals:
-          type: string
     AccountDetails:
       type: object
       properties:
@@ -199,10 +176,28 @@ components:
           type: boolean
         portfolio:
           type: boolean
-    ErrorResponse:
+    Collateral:
       type: object
       properties:
-        error:
+        collateral_asset:
+          type: string
+          enum:
+          - USDC
+          - USDT
+          - WETH
+          - WBTC
+          - aeUSD
+          - SDAI
+          - weETH
+        collateral_value:
+          type: string
+        margin_value:
+          type: string
+        balance:
+          type: string
+        available_balance:
+          type: string
+        pending_withdrawals:
           type: string
     Position:
       type: object
@@ -276,27 +271,32 @@ components:
           type: string
         leverage:
           type: string
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
   responses:
-    InternalError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Malformed request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    RateLimited:
-      description: Rate limit exceeded
+    InternalError:
+      description: Internal server error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Unauthorized - missing or invalid authentication
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded
       content:
         application/json:
           schema:
