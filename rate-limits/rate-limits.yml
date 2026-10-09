@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Ribbon Finance / Aevo Rate Limits
 description: Rate limits for the Aevo REST API and WebSocket API. Public endpoints are rate-limited per IP address. Authenticated private endpoints are rate-limited per account. When rate limits are exceeded on the REST API, a 429 HTTP response is returned. WebSocket connections time out after 15 minutes of inactivity without a ping.
 url: https://api-docs.aevo.xyz/reference/rate-limits-1

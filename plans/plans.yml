@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Ribbon Finance / Aevo Plans
 description: Ribbon Finance and Aevo operate as permissionless DeFi protocols. Access to the public API is free and open. Vault participation involves protocol fees on vault profits rather than subscription tiers. Aevo exchange trading uses a maker/taker fee model with no monthly subscription cost.
 url: https://docs.ribbon.finance/
@@ -59,3 +63,32 @@ plans:
       - 10% performance fee on weekly profits
       - 50% of fees to RBN stakers (veRBN holders)
       - Available on Ethereum, Avalanche, and Solana
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  units:
+  - period
+  plans:
+  - name: Public API Access
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - period
+    periods: []
+  - name: Authenticated API Access
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - period
+    periods: []
+  - name: Theta Vault Participation
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - other
+    periods: []
